@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <!-- Silver gradient -->
+    <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#d0d0d0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#808080;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Cyan glow -->
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00aaff;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Black background -->
+  <rect width="128" height="128" fill="#000000"/>
+  
+  <!-- Rotating outer ring -->
+  <circle cx="64" cy="64" r="50" fill="none" stroke="#252525" stroke-width="2"/>
+  <circle cx="64" cy="64" r="50" fill="none" stroke="url(#cyanGlow)" stroke-width="1" stroke-dasharray="10 5" filter="url(#glow)">
+    <animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Inner ring -->
+  <circle cx="64" cy="64" r="40" fill="none" stroke="#353535" stroke-width="1"/>
+  
+  <!-- P letter with glow -->
+  <g filter="url(#glow)">
+    <!-- Stem -->
+    <rect x="40" y="28" width="14" height="72" rx="3" fill="url(#silverGrad)">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Bowl -->
+    <path d="M 54 28 H 86 Q 100 28 100 50 Q 100 72 86 72 H 54 V 28 Z" fill="url(#silverGrad)">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+    </path>
+  </g>
+  
+  <!-- White core -->
+  <g>
+    <rect x="43" y="34" width="8" height="60" rx="2" fill="#ffffff" opacity="0.9"/>
+    <path d="M 57 34 H 86 Q 94 34 94 50 Q 94 66 86 66 H 57 V 34 Z" fill="#ffffff" opacity="0.9"/>
+  </g>
+  
+  <!-- Glowing accent line -->
+  <line x1="28" y1="64" x2="38" y2="64" stroke="url(#cyanGlow)" stroke-width="2" stroke-linecap="round" filter="url(#glow)">
+    <animate attributeName="x1" values="28;32;28" dur="1.5s" repeatCount="indefinite"/>
+    <animate attributeName="x2" values="38;42;38" dur="1.5s" repeatCount="indefinite"/>
+  </line>
+  
+  <!-- Pulsing dot -->
+  <circle cx="100" cy="50" r="4" fill="url(#cyanGlow)" filter="url(#glow)">
+    <animate attributeName="r" values="3;5;3" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Floating particles -->
+  <circle cx="25" cy="35" r="2" fill="#606060">
+    <animate attributeName="cy" values="35;33;35" dur="2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="25" cy="64" r="2" fill="#606060">
+    <animate attributeName="cy" values="64;62;64" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+  </circle>
+  <circle cx="25" cy="93" r="2" fill="#606060">
+    <animate attributeName="cy" values="93;91;93" dur="1.8s" repeatCount="indefinite" begin="1s"/>
+    <animate attributeName="opacity" values="0.3;0.7;0.3" dur="1.8s" repeatCount="indefinite" begin="1s"/>
+  </circle>
+</svg>
